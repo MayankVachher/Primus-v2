@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -21,13 +22,12 @@ public class MainActivity_with_snackbar extends AppCompatActivity {
     private static TextView numberDisplayed;
     private CoordinatorLayout coordinatorLayout;
     private static Button yesButton, noButton, skipButton, showHintButton, cheatButton;
-    private static Boolean isHintPressed;
+    private static Integer numberDisplayed_int;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_with_snackbar);
 
-        isHintPressed = Boolean.FALSE;
         numberDisplayed = (TextView) findViewById(R.id.numberDisplayed);
         yesButton = (Button) findViewById(R.id.button_yes);
         noButton = (Button) findViewById(R.id.button_no);
@@ -36,7 +36,12 @@ public class MainActivity_with_snackbar extends AppCompatActivity {
         cheatButton = (Button) findViewById(R.id.button_cheat);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.main_coordinatorLayout);
 
-        genRandomNumberAndSet(numberDisplayed);
+        if(numberDisplayed_int == null) {
+            genRandomNumberAndSet(numberDisplayed);
+        }
+        else {
+            numberDisplayed.setText(numberDisplayed_int+"");
+        }
 
         if (yesButton != null) {
             yesButton.setOnClickListener(isPrimeListener);
@@ -53,6 +58,19 @@ public class MainActivity_with_snackbar extends AppCompatActivity {
         if(cheatButton != null) {
             cheatButton.setOnClickListener(showCheatListener);
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("number", numberDisplayed_int);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        numberDisplayed_int = savedInstanceState.getInt("number");
     }
 
     private Integer parseInteger(TextView numberDisplayed) {
@@ -163,7 +181,7 @@ public class MainActivity_with_snackbar extends AppCompatActivity {
 
     private void genRandomNumberAndSet(TextView numberDisplayed) {
         Random randomGenerator = new Random();
-        int toSet = randomGenerator.nextInt(1000) + 1;
-        numberDisplayed.setText(toSet+"");
+        numberDisplayed_int = randomGenerator.nextInt(1000) + 1;
+        numberDisplayed.setText(numberDisplayed_int+"");
     }
 }
