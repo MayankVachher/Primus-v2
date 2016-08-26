@@ -6,4 +6,5 @@
     <string name="buttonYes">Yes!</string>
     <string name="buttonNo">No!</string>
     <string name="buttonSkip">Next</string>
+    <string name="hintText">All even numbers are not prime!</string>
 </resources>

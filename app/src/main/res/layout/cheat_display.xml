@@ -26,13 +26,11 @@
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="100sp"
-                android:text="5"
                 android:textAllCaps="true" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/cheat_isPrime"
-                android:text="is a prime Number"
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/colorSecondaryText"
                 android:textSize="16sp"

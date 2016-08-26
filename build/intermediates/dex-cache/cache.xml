@@ -1,2 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/Users/D4RKF0RCE/Documents/Sem7/MC/Assignment2/PrimeQuiz/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="/Users/D4RKF0RCE/Documents/Sem7/MC/Assignment2/PrimeQuiz/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.4.0_77da6249ecbaee48420d22987ddad4027e7b2225.jar" />
+    </item>
+    <item
+        jar="/Users/D4RKF0RCE/Documents/Sem7/MC/Assignment2/PrimeQuiz/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="/Users/D4RKF0RCE/Documents/Sem7/MC/Assignment2/PrimeQuiz/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-23.4.0_169ab330548b580647899be74e6e9c72ce21ef4f.jar" />
+    </item>
+    <item
+        jar="/Users/D4RKF0RCE/Documents/Sem7/MC/Assignment2/PrimeQuiz/app/build/intermediates/exploded-aar/com.android.support/design/23.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="f0001e71cea6ae432a00021c6f727f5ef0f3d27e">
+        <dex dex="/Users/D4RKF0RCE/Documents/Sem7/MC/Assignment2/PrimeQuiz/app/build/intermediates/pre-dexed/debug/com.android.support-design-23.3.0_165f0cba71601194e368d5d6c6c7f1c61d813a37.jar" />
+    </item>
+    <item
+        jar="/Users/D4RKF0RCE/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="/Users/D4RKF0RCE/Documents/Sem7/MC/Assignment2/PrimeQuiz/app/build/intermediates/pre-dexed/debug/support-annotations-23.4.0_f93ce4c0bc07d59493692324b7e5362cd30c8182.jar" />
+    </item>
+    <item
+        jar="/Users/D4RKF0RCE/Documents/Sem7/MC/Assignment2/PrimeQuiz/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="/Users/D4RKF0RCE/Documents/Sem7/MC/Assignment2/PrimeQuiz/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-23.4.0_ec98434b789a77f2e41194f4ff2fa7a92bd2e879.jar" />
+    </item>
+    <item
+        jar="/Users/D4RKF0RCE/Documents/Sem7/MC/Assignment2/PrimeQuiz/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="/Users/D4RKF0RCE/Documents/Sem7/MC/Assignment2/PrimeQuiz/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.4.0_458ddd7aa5f934ed0c4368bb30f91ef5c9d55158.jar" />
+    </item>
+    <item
+        jar="/Users/D4RKF0RCE/Documents/Sem7/MC/Assignment2/PrimeQuiz/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="debf30ce0a7560396b6235edef77e447006454c2">
+        <dex dex="/Users/D4RKF0RCE/Documents/Sem7/MC/Assignment2/PrimeQuiz/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-23.3.0_7db541b2e8909bb44795568bd0fcd92f062a2a03.jar" />
+    </item>
+    <item
+        jar="/Users/D4RKF0RCE/Documents/Sem7/MC/Assignment2/PrimeQuiz/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/libs/internal_impl-23.4.0.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="/Users/D4RKF0RCE/Documents/Sem7/MC/Assignment2/PrimeQuiz/app/build/intermediates/pre-dexed/debug/internal_impl-23.4.0_da76ef347fad07d2152fbda6454129579474810d.jar" />
+    </item>
+
+</items>

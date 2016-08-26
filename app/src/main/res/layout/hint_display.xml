@@ -5,7 +5,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is hint!"
+        android:text="@string/hintText"
         android:textSize="20sp"
         android:layout_centerInParent="true"/>
 

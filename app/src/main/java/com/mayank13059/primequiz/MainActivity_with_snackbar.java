@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Objects;
 import java.util.Random;
@@ -23,6 +24,7 @@ public class MainActivity_with_snackbar extends AppCompatActivity {
     private CoordinatorLayout coordinatorLayout;
     private static Button yesButton, noButton, skipButton, showHintButton, cheatButton;
     private static Integer numberDisplayed_int;
+    private static Boolean isHintEnabled;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +45,10 @@ public class MainActivity_with_snackbar extends AppCompatActivity {
             numberDisplayed.setText(numberDisplayed_int+"");
         }
 
+        if(isHintEnabled == null) {
+            isHintEnabled = Boolean.TRUE;
+        }
+
         if (yesButton != null) {
             yesButton.setOnClickListener(isPrimeListener);
         }
@@ -61,16 +67,27 @@ public class MainActivity_with_snackbar extends AppCompatActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 123) {
+            isHintEnabled = Boolean.FALSE;
+        }
+
+    }
+
+    @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
         outState.putInt("number", numberDisplayed_int);
+        outState.putBoolean("hintEnabled", isHintEnabled);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         numberDisplayed_int = savedInstanceState.getInt("number");
+        isHintEnabled = savedInstanceState.getBoolean("hintEnabled");
     }
 
     private Integer parseInteger(TextView numberDisplayed) {
@@ -134,16 +151,22 @@ public class MainActivity_with_snackbar extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             genRandomNumberAndSet(numberDisplayed);
-            showHintButton.setEnabled(Boolean.TRUE);
+            isHintEnabled = Boolean.TRUE;
+
         }
     };
 
     private View.OnClickListener showHintListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            showHintButton.setEnabled(Boolean.FALSE);
-            Intent showHintIntent = new Intent(getApplicationContext(), HintActivity.class);
-            startActivity(showHintIntent);
+            if(!isHintEnabled) {
+                Toast.makeText(getApplicationContext(), "Hint already used!", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                isHintEnabled = Boolean.FALSE;
+                Intent showHintIntent = new Intent(getApplicationContext(), HintActivity.class);
+                startActivityForResult(showHintIntent, 123);
+            }
         }
     };
 
