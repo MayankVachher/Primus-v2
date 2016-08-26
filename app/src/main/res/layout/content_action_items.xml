@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="@dimen/activity_vertical_margin">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buttonYes"
+            android:id="@+id/button_yes"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/colorPrimaryText"
+            android:theme="@style/YesButton"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buttonNo"
+            android:id="@+id/button_no"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/colorPrimaryText"
+            android:theme="@style/NoButton"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buttonSkip"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:id="@+id/button_skip"
+            android:layout_marginTop="46dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorPrimaryText"
+            android:theme="@style/SkipButton"/>
+</RelativeLayout>

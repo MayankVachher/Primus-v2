@@ -1,0 +1,32 @@
+<resources>
+
+    <style name="AppTheme" parent="MaterialBase">
+    </style>
+
+    <style name="MaterialBase" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:actionMenuTextColor">@color/colorIcons</item>
+    </style>
+
+    <style name="YesButton" parents="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">@color/colorPrimaryLight</item>
+        <item name="colorButtonNormal">@color/colorPrimary</item>
+    </style>
+
+    <style name="NoButton" parents="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">@color/colorPrimaryLight</item>
+        <item name="colorButtonNormal">@color/colorPrimary</item>
+    </style>
+
+    <style name="SkipButton" parents="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">@color/colorPrimaryLight</item>
+    </style>
+
+</resources>

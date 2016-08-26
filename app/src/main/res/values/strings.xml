@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Primus</string>
+    <string name="action_settings">Settings</string>
+    <string name="isTheNumString">Is the number</string>
+    <string name="aPrimeString">a prime number?</string>
+    <string name="buttonYes">Yes!</string>
+    <string name="buttonNo">No!</string>
+    <string name="buttonSkip">Next</string>
+</resources>
