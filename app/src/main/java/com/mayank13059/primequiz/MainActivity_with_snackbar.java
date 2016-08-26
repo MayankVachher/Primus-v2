@@ -24,7 +24,7 @@ public class MainActivity_with_snackbar extends AppCompatActivity {
     private CoordinatorLayout coordinatorLayout;
     private static Button yesButton, noButton, skipButton, showHintButton, cheatButton;
     private static Integer numberDisplayed_int;
-    private static Boolean isHintEnabled;
+    private static Boolean isHintEnabled, isCheatEnabled;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +47,10 @@ public class MainActivity_with_snackbar extends AppCompatActivity {
 
         if(isHintEnabled == null) {
             isHintEnabled = Boolean.TRUE;
+        }
+
+        if(isCheatEnabled == null) {
+            isCheatEnabled = Boolean.TRUE;
         }
 
         if (yesButton != null) {
@@ -74,6 +78,10 @@ public class MainActivity_with_snackbar extends AppCompatActivity {
             isHintEnabled = Boolean.FALSE;
         }
 
+        if(requestCode == 456) {
+            isCheatEnabled = Boolean.FALSE;
+        }
+
     }
 
     @Override
@@ -81,6 +89,7 @@ public class MainActivity_with_snackbar extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putInt("number", numberDisplayed_int);
         outState.putBoolean("hintEnabled", isHintEnabled);
+        outState.putBoolean("cheatEnabled", isCheatEnabled);
     }
 
     @Override
@@ -88,6 +97,7 @@ public class MainActivity_with_snackbar extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         numberDisplayed_int = savedInstanceState.getInt("number");
         isHintEnabled = savedInstanceState.getBoolean("hintEnabled");
+        isCheatEnabled = savedInstanceState.getBoolean("cheatEnabled");
     }
 
     private Integer parseInteger(TextView numberDisplayed) {
@@ -173,18 +183,24 @@ public class MainActivity_with_snackbar extends AppCompatActivity {
     private View.OnClickListener showCheatListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent showCheatIntent = new Intent(getApplicationContext(), CheatActivity.class);
-            TextView numberDisplayed = (TextView) findViewById(R.id.numberDisplayed);
-            Integer numberToCheck = parseInteger(numberDisplayed);
-
-            if(numberToCheck == null) {
-                return;
+            if(!isCheatEnabled) {
+                Toast.makeText(getApplicationContext(), "Cheat already used!", Toast.LENGTH_SHORT).show();
             }
+            else {
+                isCheatEnabled = Boolean.FALSE;
+                Intent showCheatIntent = new Intent(getApplicationContext(), CheatActivity.class);
+                TextView numberDisplayed = (TextView) findViewById(R.id.numberDisplayed);
+                Integer numberToCheck = parseInteger(numberDisplayed);
 
-            Boolean result = checkPrime(numberToCheck);
-            showCheatIntent.putExtra("number",numberToCheck);
-            showCheatIntent.putExtra("isPrime", result);
-            startActivity(showCheatIntent);
+                if (numberToCheck == null) {
+                    return;
+                }
+
+                Boolean result = checkPrime(numberToCheck);
+                showCheatIntent.putExtra("number", numberToCheck);
+                showCheatIntent.putExtra("isPrime", result);
+                startActivityForResult(showCheatIntent, 456);
+            }
         }
     };
 
