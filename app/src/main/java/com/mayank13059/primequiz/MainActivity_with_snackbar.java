@@ -1,5 +1,6 @@
 package com.mayank13059.primequiz;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
@@ -19,16 +20,20 @@ public class MainActivity_with_snackbar extends AppCompatActivity {
 
     private static TextView numberDisplayed;
     private CoordinatorLayout coordinatorLayout;
-    private static Button yesButton, noButton, skipButton;
+    private static Button yesButton, noButton, skipButton, showHintButton, cheatButton;
+    private static Boolean isHintPressed;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_with_snackbar);
 
+        isHintPressed = Boolean.FALSE;
         numberDisplayed = (TextView) findViewById(R.id.numberDisplayed);
         yesButton = (Button) findViewById(R.id.button_yes);
         noButton = (Button) findViewById(R.id.button_no);
         skipButton = (Button) findViewById(R.id.button_skip);
+        showHintButton = (Button) findViewById(R.id.button_showHint);
+        cheatButton = (Button) findViewById(R.id.button_cheat);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.main_coordinatorLayout);
 
         genRandomNumberAndSet(numberDisplayed);
@@ -42,16 +47,27 @@ public class MainActivity_with_snackbar extends AppCompatActivity {
         if (skipButton != null) {
             skipButton.setOnClickListener(genNextNumberListener);
         }
+        if(showHintButton != null) {
+            showHintButton.setOnClickListener(showHintListener);
+        }
+        if(cheatButton != null) {
+            cheatButton.setOnClickListener(showCheatListener);
+        }
+    }
+
+    private Integer parseInteger(TextView numberDisplayed) {
+        Integer numberToCheck = null;
+        if (numberDisplayed != null) {
+            return Integer.parseInt(numberDisplayed.getText().toString());
+        }
+        return null;
     }
 
     private View.OnClickListener isPrimeListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             TextView numberDisplayed = (TextView) findViewById(R.id.numberDisplayed);
-            Integer numberToCheck = null;
-            if (numberDisplayed != null) {
-                numberToCheck = Integer.parseInt(numberDisplayed.getText().toString());
-            }
+            Integer numberToCheck = parseInteger(numberDisplayed);
 
             if(numberToCheck == null) {
                 return;
@@ -92,6 +108,7 @@ public class MainActivity_with_snackbar extends AppCompatActivity {
             Snackbar resultSnackbar = Snackbar.make(coordinatorLayout, result_value, Snackbar.LENGTH_SHORT);
             resultSnackbar.getView().setBackgroundColor(result_color);
             resultSnackbar.show();
+            genRandomNumberAndSet(numberDisplayed);
         }
     };
 
@@ -99,6 +116,34 @@ public class MainActivity_with_snackbar extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             genRandomNumberAndSet(numberDisplayed);
+            showHintButton.setEnabled(Boolean.TRUE);
+        }
+    };
+
+    private View.OnClickListener showHintListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            showHintButton.setEnabled(Boolean.FALSE);
+            Intent showHintIntent = new Intent(getApplicationContext(), HintActivity.class);
+            startActivity(showHintIntent);
+        }
+    };
+
+    private View.OnClickListener showCheatListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent showCheatIntent = new Intent(getApplicationContext(), CheatActivity.class);
+            TextView numberDisplayed = (TextView) findViewById(R.id.numberDisplayed);
+            Integer numberToCheck = parseInteger(numberDisplayed);
+
+            if(numberToCheck == null) {
+                return;
+            }
+
+            Boolean result = checkPrime(numberToCheck);
+            showCheatIntent.putExtra("number",numberToCheck);
+            showCheatIntent.putExtra("isPrime", result);
+            startActivity(showCheatIntent);
         }
     };
 
